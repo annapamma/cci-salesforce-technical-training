@@ -15,6 +15,10 @@ jobs:
       - run: echo “say this second”
 
 workflows:
+ one-and-two:
+    jobs:
+      - one
+      - two
   one-then-two:
     jobs:
       - one
