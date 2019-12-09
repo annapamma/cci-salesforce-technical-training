@@ -1,24 +1,23 @@
 version: 2.1
 
 jobs:
-  build:
+  one:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: echo ”this is a build job”
-  test:
+      - run: echo ”say this first”
+  two:
     docker:
       - image: circleci/node:9.9.0
     steps:
       - checkout
-      - run: echo “this is a test job”
+      - run: echo “say this second”
 
 workflows:
-  build-and-test:
+  one-then-two:
     jobs:
-      - build
-      - test:
+      - one
+      - two:
           requires:
-            - build
-
+            - one
